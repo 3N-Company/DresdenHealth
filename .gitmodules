@@ -1,0 +1,6 @@
+[submodule "DresdenHealth-Backend"]
+	path = DresdenHealth-Backend
+	url = https://github.com/3N-Company/DresdenHealth-Backend.git
+[submodule "DresdenHealth-Frontend"]
+	path = DresdenHealth-Frontend
+	url = https://github.com/3N-Company/DresdenHealth-Frontend.git
