@@ -41,7 +41,8 @@ services:
         build: ./DresdenHealth-Frontend
         ports:
             - 90:3000
-        depends_on:
-          - dhb
         links:
-          - dhb
+            - dhb
+        depends_on:
+            - dhb
+        
