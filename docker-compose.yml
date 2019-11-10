@@ -15,7 +15,7 @@ services:
             - dhb
         depends_on:
             - dhb
-    
+
     email:
         build: ./DresdenHealth-Backend/services/email
         ports:
@@ -36,3 +36,12 @@ services:
         image: mongo
         ports:
             - 27017:27017
+
+    frontend:
+        build: ./DresdenHealth-Frontend
+        ports:
+            - 90:3000
+        depends_on:
+          - dhb
+        links:
+          - dhb
