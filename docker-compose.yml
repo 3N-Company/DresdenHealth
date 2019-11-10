@@ -1,0 +1,38 @@
+version: '2'
+services:
+    telegramsender:
+        build: ./DresdenHealth-Backend/services/telegram/sender
+        ports:
+            - 8081:8081
+    telegram_register:
+        build: ./DresdenHealth-Backend/services/telegram/register
+        ports:
+            - 80:80
+            - 443:443
+            - 88:88
+            - 8443:8443
+        links:
+            - dhb
+        depends_on:
+            - dhb
+    
+    email:
+        build: ./DresdenHealth-Backend/services/email
+        ports:
+            - 8082:8082
+    dhb:
+        build: ./DresdenHealth-Backend/core/DresdenHealthBackend
+        ports:
+            - 8080:8080
+        links:
+            - email
+            - mongo
+            - telegramsender
+        depends_on:
+            - email
+            - mongo
+            - telegramsender
+    mongo:
+        image: mongo
+        ports:
+            - 27017:27017
